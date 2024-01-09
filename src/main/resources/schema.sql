@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS t_memos (
+  id int NOT NULL AUTO_INCREMENT,
+  title varchar(32) NOT NULL DEFAULT '',
+  detail varchar(1024) NOT NULL DEFAULT '',
+  user_id int DEFAULT NULL,
+  is_deleted tinyint NOT NULL DEFAULT 0,
+  created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);

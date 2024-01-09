@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+	<!-- Console -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- File -->
+	<appender name="APPLICATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- File Name -->
+		<file>C:\Test\log\app.log</file>
+		<!-- rotation -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>C:\Test\log\app-%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+			<maxHistory>3</maxHistory>
+		</rollingPolicy>
+		<!-- Format -->
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- Logger -->
+	<logger name="appLogger" level="INFO">
+		<appender-ref ref="APPLICATION_LOG"></appender-ref>
+	</logger>
+	
+	<!-- Root -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT"></appender-ref>
+	</root>
+</configuration>
